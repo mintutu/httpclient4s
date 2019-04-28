@@ -34,7 +34,7 @@ class WeightedRoundRobinResource[T](items: List[T], defaultWeight: Int, decremen
     }
   }
 
-  def set(resources: List[(T, Int)]): Unit = {
+  private def set(resources: List[(T, Int)]): Unit = {
     this.synchronized {
       weightedRRItr = new WeightedRoundRobinIterator(resources)
     }
