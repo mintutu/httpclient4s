@@ -8,10 +8,8 @@ import akka.http.scaladsl.model._
 import akka.stream.ActorMaterializer
 import akka.stream.scaladsl._
 import akka.stream.{OverflowStrategy, QueueOfferResult}
-import com.mintutu.httpclient4s.exception.NoAvailableServer
 import com.mintutu.httpclient4s.retry.RetryLogic
 import com.mintutu.httpclient4s.selector.Selector
-import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.util.{Failure, Success}
@@ -22,7 +20,7 @@ abstract class MultipleHostPool(servers: Seq[Uri],
                                 overflowStrategy: OverflowStrategy)(
   implicit val system: ActorSystem,
   implicit val materializer: ActorMaterializer,
-  implicit val executionContext: ExecutionContext) extends Selector[Uri] with LazyLogging {
+  implicit val executionContext: ExecutionContext) extends Selector[Uri] {
 
   override def hosts(): Seq[Uri] = servers
 
