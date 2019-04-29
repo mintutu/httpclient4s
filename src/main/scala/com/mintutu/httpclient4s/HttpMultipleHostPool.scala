@@ -14,10 +14,10 @@ import com.mintutu.httpclient4s.selector.Selector
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.util.{Failure, Success}
 
-abstract class MultipleHostPool(servers: Seq[Uri],
-                                bufferSize: Int,
-                                retryStrategy: RetryLogic[HttpRequest, HttpResponse],
-                                overflowStrategy: OverflowStrategy)(
+abstract class HttpMultipleHostPool(servers: Seq[Uri],
+                                    bufferSize: Int,
+                                    retryStrategy: RetryLogic[HttpRequest, HttpResponse],
+                                    overflowStrategy: OverflowStrategy)(
   implicit val system: ActorSystem,
   implicit val materializer: ActorMaterializer,
   implicit val executionContext: ExecutionContext) extends Selector[Uri] {
